@@ -7,7 +7,7 @@ Instructions how to host API:
   Make sure you (tick) add Windows Communication Foundation support
   
 2- Setup the WCF API(s) in IIS: https://www.youtube.com/watch?v=g-w1GvkwErk
-  This includes both the CarrierAPI and the LoggingService as the former depends on the latter.
+  This includes both the CarrierAPI, CarrierAPIXML and the LoggingService as the former two depend on the latter.
 
 3- Download & Install Postman
 
