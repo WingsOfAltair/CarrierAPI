@@ -71,7 +71,6 @@
     <Compile Include="ICarrierAPI.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Response.cs" />
     <Compile Include="Shipping.cs" />
   </ItemGroup>
   <ItemGroup>
