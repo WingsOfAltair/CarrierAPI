@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\CarrierAPI</_PublishTargetUrl>
+    <History>True|2022-08-24T14:27:04.7080314Z;True|2022-08-24T17:24:58.8235469+03:00;True|2022-08-24T17:22:47.0567053+03:00;False|2022-08-24T17:22:23.0798393+03:00;False|2022-08-24T17:21:58.0865034+03:00;False|2022-08-24T17:21:43.7396034+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CarrierAPI.dll">
+      <publishTime>08/24/2022 17:27:04</publishTime>
+    </File>
+    <File Include="bin/CarrierAPI.pdb">
+      <publishTime>08/24/2022 17:27:04</publishTime>
+    </File>
+    <File Include="CarrierAPI.svc">
+      <publishTime>08/24/2022 16:38:21</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/24/2022 17:21:43</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
