@@ -8,3 +8,5 @@ C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Debug\C
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Newtonsoft.Json.dll
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Newtonsoft.Json.xml
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Debug\CarrierAPI.csproj.CopyComplete
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Dependencies.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Dependencies.pdb

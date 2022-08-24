@@ -1,0 +1,6 @@
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\obj\Debug\Dependencies.csproj.AssemblyReference.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\obj\Debug\Dependencies.csproj.CoreCompileInputs.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\bin\Debug\Dependencies.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\bin\Debug\Dependencies.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\obj\Debug\Dependencies.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\Dependencies\obj\Debug\Dependencies.pdb

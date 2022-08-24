@@ -1,0 +1,10 @@
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\obj\Debug\CarrierAPIXML.csproj.AssemblyReference.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\obj\Debug\CarrierAPIXML.csproj.CoreCompileInputs.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\bin\CarrierAPIXML.dll.config
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\bin\CarrierAPIXML.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\bin\CarrierAPIXML.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\bin\Dependencies.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\bin\Dependencies.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\obj\Debug\CarrierAPIXML.csproj.CopyComplete
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\obj\Debug\CarrierAPIXML.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPIXML\obj\Debug\CarrierAPIXML.pdb

@@ -1,0 +1,17 @@
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.csproj.AssemblyReference.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.csproj.SuggestedBindingRedirects.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI_Test_Cases.Form1.resources
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI_Test_Cases.Properties.Resources.resources
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.csproj.GenerateResource.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.csproj.CoreCompileInputs.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI Test Cases.exe.config
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI Test Cases.exe
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI Test Cases.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\CarrierAPI.dll.config
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.csproj.CopyComplete
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.exe
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\obj\Debug\CarrierAPI Test Cases.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\Dependencies.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI Test Cases\bin\Debug\Dependencies.pdb

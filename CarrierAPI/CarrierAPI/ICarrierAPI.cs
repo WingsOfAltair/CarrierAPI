@@ -25,5 +25,19 @@ namespace CarrierAPI
         ]
         string PerformShipping(int serviceUsed = -1, int serviceID = -1, double width = 0,
             double height = 0, double length = 0, double weight = 0);
+
+        [OperationContract]
+        [
+            WebInvoke
+            (
+                Method = "POST",
+                UriTemplate = "PerformShippingXML",
+                RequestFormat = WebMessageFormat.Xml,
+                ResponseFormat = WebMessageFormat.Xml,
+                BodyStyle = WebMessageBodyStyle.WrappedRequest
+            )
+        ]
+        string PerformShippingXML(int serviceUsed = -1, int serviceID = -1, double width = 0,
+            double height = 0, double length = 0, double weight = 0);
     }
 }
