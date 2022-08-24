@@ -20,6 +20,23 @@ namespace CarrierAPI
         {
             try
             {
+                if (width <= 0)
+                {
+                    return new JavaScriptSerializer().Serialize("Invalid package width.");
+                }
+                if (height <= 0)
+                {
+                    return new JavaScriptSerializer().Serialize("Invalid package height.");
+                }
+                if (length <= 0)
+                {
+                    return new JavaScriptSerializer().Serialize("Invalid package length.");
+                }
+                if (weight <= 0)
+                {
+                    return new JavaScriptSerializer().Serialize("Invalid package weight.");
+                }
+
                 if (serviceUsed > -1)
                 {
                     Shipping.ShippingServices shippingServiceUsed = (Shipping.ShippingServices)serviceUsed;
