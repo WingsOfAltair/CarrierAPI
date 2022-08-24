@@ -5,3 +5,6 @@ C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Release
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Release\CarrierAPI.csproj.CoreCompileInputs.cache
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Release\CarrierAPI.dll
 C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Release\CarrierAPI.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Newtonsoft.Json.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\bin\Newtonsoft.Json.xml
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\CarrierAPI\obj\Release\CarrierAPI.csproj.CopyComplete

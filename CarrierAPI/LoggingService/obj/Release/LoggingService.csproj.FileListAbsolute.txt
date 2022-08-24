@@ -1,0 +1,7 @@
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\bin\LoggingService.dll.config
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\bin\LoggingService.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\bin\LoggingService.pdb
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\obj\Release\LoggingService.csproj.AssemblyReference.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\obj\Release\LoggingService.csproj.CoreCompileInputs.cache
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\obj\Release\LoggingService.dll
+C:\Users\basha\OneDrive\Desktop\Dev\CarrierAPI\CarrierAPI\LoggingService\obj\Release\LoggingService.pdb

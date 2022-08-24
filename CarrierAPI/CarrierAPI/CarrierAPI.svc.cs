@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarrierAPI.LoggingService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,6 +16,7 @@ namespace CarrierAPI
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class CarrierAPI : ICarrierAPI
     {
+        LoggingServiceClient loggingService = new LoggingServiceClient();
         public string PerformShipping(int serviceUsed = -1, int serviceID = -1, double width = 0,
             double height = 0, double length = 0, double weight = 0)
         {
@@ -37,6 +39,12 @@ namespace CarrierAPI
                     return new JavaScriptSerializer().Serialize("Invalid package weight.");
                 }
 
+                Package package = new Package();
+                package.Width = width;
+                package.Height = height;
+                package.Length = length;
+                package.Weight = weight;
+
                 if (serviceUsed > -1)
                 {
                     Shipping.ShippingServices shippingServiceUsed = (Shipping.ShippingServices)serviceUsed;
@@ -44,10 +52,10 @@ namespace CarrierAPI
                     switch (shippingServiceUsed)
                     {
                         case Shipping.ShippingServices.FedEx:
-                            return new JavaScriptSerializer().Serialize(ShipUsingFedEx(serviceID, width, height, length, weight));
+                            return new JavaScriptSerializer().Serialize(ShipUsingFedEx(serviceID, package));
 
                         case Shipping.ShippingServices.UPS:
-                            return new JavaScriptSerializer().Serialize(ShipUsingUPS(serviceID, width, height, length, weight));
+                            return new JavaScriptSerializer().Serialize(ShipUsingUPS(serviceID, package));
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
@@ -61,12 +69,12 @@ namespace CarrierAPI
             } catch(Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingFedEx(int serviceID = -1, double width = 0,
-            double height = 0, double length = 0, double weight = 0)
+        private string ShipUsingFedEx(int serviceID = -1, Package package = null)
         {
             try
             {
@@ -77,10 +85,10 @@ namespace CarrierAPI
                     switch (serviceTypeUsed)
                     {
                         case Shipping.ServiceTypes.FedExAIR:
-                            return ShipUsingFedExAIR(serviceID, width, height, length, weight);
+                            return ShipUsingFedExAIR(serviceID, package);
 
                         case Shipping.ServiceTypes.FedExGround:
-                            return ShipUsingFedExGround(serviceID, width, height, length, weight);
+                            return ShipUsingFedExGround(serviceID, package);
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
@@ -96,12 +104,12 @@ namespace CarrierAPI
             catch (Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingUPS(int serviceID = -1, double width = 0,
-            double height = 0, double length = 0, double weight = 0)
+        private string ShipUsingUPS(int serviceID = -1, Package package = null)
         {
             try
             {
@@ -112,10 +120,10 @@ namespace CarrierAPI
                     switch (serviceTypeUsed)
                     {
                         case Shipping.ServiceTypes.UPSExpress:
-                            return ShipUsingUPSExpress(serviceID, width, height, length, weight);
+                            return ShipUsingUPSExpress(serviceID, package);
 
                         case Shipping.ServiceTypes.UPS2DAY:
-                            return ShipUsingUPS2DAY(serviceID, width, height, length, weight);
+                            return ShipUsingUPS2DAY(serviceID, package);
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
@@ -131,61 +139,66 @@ namespace CarrierAPI
             catch (Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingFedExGround(int serviceID, double width, double height, double length, double weight)
+        private string ShipUsingFedExGround(int serviceID, Package package)
         {
             try
             {
                 // Make API call to FedEx Ground API with arguments from input.
-                return new JavaScriptSerializer().Serialize(String.Format("Success"));
+                return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             } catch(Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingFedExAIR(int serviceID, double width, double height, double length, double weight)
+        private string ShipUsingFedExAIR(int serviceID, Package package)
         {
             try
             {
                 // Make API call to FedEx AIR API with arguments from input.
-                return new JavaScriptSerializer().Serialize(String.Format("Success"));
+                return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingUPSExpress(int serviceID, double width, double height, double length, double weight)
+        private string ShipUsingUPSExpress(int serviceID, Package package)
         {
             try
             {
                 // Make API call to UPS Express API with arguments from input.
-                return new JavaScriptSerializer().Serialize(String.Format("Success"));
+                return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
 
-        private string ShipUsingUPS2DAY(int serviceID, double width, double height, double length, double weight)
+        private string ShipUsingUPS2DAY(int serviceID, Package package)
         {
             try
             {
                 // Make API call to UPS2DAY API with arguments from input.
-                return new JavaScriptSerializer().Serialize(String.Format("Success"));
+                return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)
             {
                 // Log error into a text file or db.
+                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
                 return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
             }
         }
