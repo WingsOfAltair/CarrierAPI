@@ -149,6 +149,7 @@ namespace CarrierAPI
             try
             {
                 // Make API call to FedEx Ground API with arguments from input.
+                loggingService.LogSuccess(String.Format("Success [FedEx Ground], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
                 return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             } catch(Exception error)
             {
@@ -163,6 +164,7 @@ namespace CarrierAPI
             try
             {
                 // Make API call to FedEx AIR API with arguments from input.
+                loggingService.LogSuccess(String.Format("Success [FedEx AIR], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
                 return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)
@@ -178,6 +180,7 @@ namespace CarrierAPI
             try
             {
                 // Make API call to UPS Express API with arguments from input.
+                loggingService.LogSuccess(String.Format("Success [UPS Express], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
                 return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)
@@ -193,6 +196,7 @@ namespace CarrierAPI
             try
             {
                 // Make API call to UPS2DAY API with arguments from input.
+                loggingService.LogSuccess(String.Format("Success [UPS 2DAY], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
                 return new JavaScriptSerializer().Serialize(String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
             }
             catch (Exception error)

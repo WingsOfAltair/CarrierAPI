@@ -5,21 +5,21 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\LoggingService</_PublishTargetUrl>
-    <History>True|2022-08-24T18:44:17.2788673Z;False|2022-08-24T21:44:07.8030411+03:00;True|2022-08-24T21:35:11.5817270+03:00;False|2022-08-24T21:34:50.5580755+03:00;</History>
+    <History>True|2022-08-24T20:47:56.5620576Z;True|2022-08-24T23:47:26.7025924+03:00;True|2022-08-24T23:45:19.0011330+03:00;True|2022-08-24T23:44:43.6316467+03:00;True|2022-08-24T23:42:32.7180515+03:00;True|2022-08-24T23:35:55.6081101+03:00;False|2022-08-24T23:35:48.8704503+03:00;True|2022-08-24T21:44:17.2788673+03:00;False|2022-08-24T21:44:07.8030411+03:00;True|2022-08-24T21:35:11.5817270+03:00;False|2022-08-24T21:34:50.5580755+03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LoggingService.dll">
-      <publishTime>08/24/2022 21:35:11</publishTime>
+      <publishTime>08/24/2022 23:47:56</publishTime>
     </File>
     <File Include="bin/LoggingService.pdb">
-      <publishTime>08/24/2022 21:35:11</publishTime>
+      <publishTime>08/24/2022 23:47:56</publishTime>
     </File>
     <File Include="LoggingService.svc">
       <publishTime>08/24/2022 21:33:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/24/2022 21:34:50</publishTime>
+      <publishTime>08/24/2022 23:47:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

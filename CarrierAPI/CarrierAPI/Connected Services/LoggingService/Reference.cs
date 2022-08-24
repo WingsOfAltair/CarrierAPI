@@ -15,6 +15,12 @@ namespace CarrierAPI.LoggingService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LoggingService.ILoggingService")]
     public interface ILoggingService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoggingService/LogSuccess", ReplyAction="http://tempuri.org/ILoggingService/LogSuccessResponse")]
+        void LogSuccess(string successMessage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoggingService/LogSuccess", ReplyAction="http://tempuri.org/ILoggingService/LogSuccessResponse")]
+        System.Threading.Tasks.Task LogSuccessAsync(string successMessage);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoggingService/LogFailure", ReplyAction="http://tempuri.org/ILoggingService/LogFailureResponse")]
         void LogFailure(string errorMessage);
         
@@ -47,6 +53,14 @@ namespace CarrierAPI.LoggingService {
         
         public LoggingServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void LogSuccess(string successMessage) {
+            base.Channel.LogSuccess(successMessage);
+        }
+        
+        public System.Threading.Tasks.Task LogSuccessAsync(string successMessage) {
+            return base.Channel.LogSuccessAsync(successMessage);
         }
         
         public void LogFailure(string errorMessage) {

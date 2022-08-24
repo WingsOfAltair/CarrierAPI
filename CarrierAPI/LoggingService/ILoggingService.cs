@@ -12,6 +12,8 @@ namespace LoggingService
     public interface ILoggingService
     {
         [OperationContract]
+        void LogSuccess(string successMessage);
+        [OperationContract]
         void LogFailure(string errorMessage);
     }
 }
