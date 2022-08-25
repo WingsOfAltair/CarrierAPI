@@ -3,11 +3,15 @@ A basic Multi-Carrier backend.
 
 Instructions how to host API:
 
-1- Install IIS 10.0: https://www.lansweeper.com/knowledgebase/how-to-install-iis/
-  Make sure you (tick) add Windows Communication Foundation support
+1- Install IIS 10.0: https://www.lansweeper.com/knowledgebase/how-to-install-iis/.
+
+Make sure you (tick) add Windows Communication Foundation support
   
-2- Setup the WCF API(s) in IIS: https://www.youtube.com/watch?v=g-w1GvkwErk
-  This includes both the CarrierAPI and the LoggingService as the former depends on the latter.
+2- Setup the WCF API(s) in IIS: https://www.youtube.com/watch?v=g-w1GvkwErk.
+
+This includes both the CarrierAPI (port 80), CarrierAPIXML (port 82) and the LoggingService (port 81) as the former two depend on the latter.
+  
+Make sure all services are running simultaneously in IIS on different ports (the mentioned ports).
 
 3- Download & Install Postman
 
