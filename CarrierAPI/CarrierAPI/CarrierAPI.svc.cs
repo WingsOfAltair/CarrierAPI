@@ -12,6 +12,7 @@ namespace CarrierAPI
     public class CarrierAPI : ICarrierAPI
     {
         LoggingServiceClient loggingService = new LoggingServiceClient();
+        Response response = new Response();
         public string PerformShipping(int serviceUsed = -1, int serviceID = -1, double width = 0,
             double height = 0, double length = 0, double weight = 0)
         {
@@ -19,19 +20,27 @@ namespace CarrierAPI
             {
                 if (width <= 0)
                 {
-                    return new JavaScriptSerializer().Serialize("Invalid package width.");
+                    response.ResponseMessage = "Invalid package width.";
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
                 }
                 if (height <= 0)
                 {
-                    return new JavaScriptSerializer().Serialize("Invalid package height.");
+                    response.ResponseMessage = "Invalid package height.";
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
                 }
                 if (length <= 0)
                 {
-                    return new JavaScriptSerializer().Serialize("Invalid package length.");
+                    response.ResponseMessage = "Invalid package length.";
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
                 }
                 if (weight <= 0)
                 {
-                    return new JavaScriptSerializer().Serialize("Invalid package weight.");
+                    response.ResponseMessage = "Invalid package weight.";
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
                 }
 
                 Package package = new Package();
@@ -55,78 +64,27 @@ namespace CarrierAPI
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
                             // Return bad response, that no such shipping service is defined in our API.
-                            return new JavaScriptSerializer().Serialize("No such shipping provider is defined in our API.");
+                            response.ResponseMessage = "No such shipping provider is defined in our API.";
+                            response.ResponseStatus = false;
+                            return new JavaScriptSerializer().Serialize(response);
                     }
                 } else
                 {
-                    return new JavaScriptSerializer().Serialize("No such shipping provider is defined in our API.");
+                    response.ResponseMessage = "No such shipping provider is defined in our API.";
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
                 }
             } catch(Exception error)
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return new JavaScriptSerializer().Serialize(String.Format("API failed to process your request. Error: {0}", error.Message));
+                    response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                    response.ResponseStatus = false;
+                    return new JavaScriptSerializer().Serialize(response);
             }
         }
 
-        public string PerformShippingXML(int serviceUsed = -1, int serviceID = -1, double width = 0,
-            double height = 0, double length = 0, double weight = 0)
-        {
-            try
-            {
-                if (width <= 0)
-                {
-                    return "Invalid package width.";
-                }
-                if (height <= 0)
-                {
-                    return "Invalid package height.";
-                }
-                if (length <= 0)
-                {
-                    return "Invalid package length.";
-                }
-                if (weight <= 0)
-                {
-                    return "Invalid package weight.";
-                }
-
-                Package package = new Package();
-                package.Width = width;
-                package.Height = height;
-                package.Length = length;
-                package.Weight = weight;
-
-                if (serviceUsed > -1)
-                {
-                    Shipping.ShippingServices shippingServiceUsed = (Shipping.ShippingServices)serviceUsed;
-
-                    switch (shippingServiceUsed)
-                    {
-                        case Shipping.ShippingServices.FedEx:
-                            return ShipUsingFedEx(serviceID, package);
-
-                        case Shipping.ShippingServices.UPS:
-                            return ShipUsingUPS(serviceID, package);
-
-                        default:
-                            // Log bad response, that no such shipping service is defined in our API.
-                            // Return bad response, that no such shipping service is defined in our API.
-                            return "No such shipping provider is defined in our API.";
-                    }
-                } else
-                {
-                    return "No such shipping provider is defined in our API.";
-                }
-            } catch(Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
-            }
-        }
-
-        private string ShipUsingFedEx(int serviceID = -1, Package package = null)
+        private Response ShipUsingFedEx(int serviceID = -1, Package package = null)
         {
             try
             {
@@ -137,31 +95,41 @@ namespace CarrierAPI
                     switch (serviceTypeUsed)
                     {
                         case Shipping.ServiceTypes.FedExAIR:
-                            return ShipUsingFedExAIR(serviceID, package);
+                            response.ResponseMessage = ShipUsingFedExAIR(serviceID, package);
+                            response.ResponseStatus = true;
+                            return response;
 
                         case Shipping.ServiceTypes.FedExGround:
-                            return ShipUsingFedExGround(serviceID, package);
+                            response.ResponseMessage = ShipUsingFedExGround(serviceID, package);
+                            response.ResponseStatus = true;
+                            return response;
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
                             // Return bad response, that no such shipping service is defined in our API.
-                            return String.Format("No such shipping service is defined in our API.");
+                            response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
+                            response.ResponseStatus = false;
+                            return response;
                     }
                 }
                 else
                 {
-                    return String.Format("No such shipping service is defined in our API.");
+                    response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
+                    response.ResponseStatus = false;
+                    return response;
                 }
             }
             catch (Exception error)
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return response;
             }
         }
 
-        private string ShipUsingUPS(int serviceID = -1, Package package = null)
+        private Response ShipUsingUPS(int serviceID = -1, Package package = null)
         {
             try
             {
@@ -172,27 +140,37 @@ namespace CarrierAPI
                     switch (serviceTypeUsed)
                     {
                         case Shipping.ServiceTypes.UPSExpress:
-                            return ShipUsingUPSExpress(serviceID, package);
+                            response.ResponseMessage = ShipUsingUPSExpress(serviceID, package);
+                            response.ResponseStatus = true;
+                            return response;
 
                         case Shipping.ServiceTypes.UPS2DAY:
-                            return ShipUsingUPS2DAY(serviceID, package);
+                            response.ResponseMessage = ShipUsingUPS2DAY(serviceID, package);
+                            response.ResponseStatus = true;
+                            return response;
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
                             // Return bad response, that no such shipping service is defined in our API.
-                            return String.Format("No such shipping service is defined in our API.");
+                            response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
+                            response.ResponseStatus = false;
+                            return response;
                     }
                 }
                 else
                 {
-                    return String.Format("No such shipping service is defined in our API.");
+                    response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
+                    response.ResponseStatus = false;
+                    return response;
                 }
             }
             catch (Exception error)
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return response;
             }
         }
 
@@ -207,7 +185,9 @@ namespace CarrierAPI
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return new JavaScriptSerializer().Serialize(response);
             }
         }
 
@@ -223,7 +203,9 @@ namespace CarrierAPI
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return new JavaScriptSerializer().Serialize(response);
             }
         }
 
@@ -239,7 +221,9 @@ namespace CarrierAPI
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return new JavaScriptSerializer().Serialize(response);
             }
         }
 
@@ -255,7 +239,9 @@ namespace CarrierAPI
             {
                 // Log error into a text file or db.
                 loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                return String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
+                response.ResponseStatus = false;
+                return new JavaScriptSerializer().Serialize(response);
             }
         }
     }
