@@ -87,8 +87,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="FedEx.cs" />
     <Compile Include="ICarrierAPIXML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UPS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

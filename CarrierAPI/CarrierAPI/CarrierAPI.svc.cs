@@ -56,10 +56,12 @@ namespace CarrierAPI
                     switch (shippingServiceUsed)
                     {
                         case Shipping.ShippingServices.FedEx:
-                            return new JavaScriptSerializer().Serialize(ShipUsingFedEx(serviceID, package));
+                            FedEx fedEx = new FedEx();
+                            return new JavaScriptSerializer().Serialize(fedEx.ShipUsingFedEx(serviceID, package));
 
                         case Shipping.ShippingServices.UPS:
-                            return new JavaScriptSerializer().Serialize(ShipUsingUPS(serviceID, package));
+                            UPS ups = new UPS();
+                            return new JavaScriptSerializer().Serialize(ups.ShipUsingUPS(serviceID, package));
 
                         default:
                             // Log bad response, that no such shipping service is defined in our API.
@@ -81,167 +83,6 @@ namespace CarrierAPI
                     response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
                     response.ResponseStatus = false;
                     return new JavaScriptSerializer().Serialize(response);
-            }
-        }
-
-        private Response ShipUsingFedEx(int serviceID = -1, Package package = null)
-        {
-            try
-            {
-                if (serviceID > -1)
-                {
-                    Shipping.ServiceTypes serviceTypeUsed = (Shipping.ServiceTypes)serviceID;
-
-                    switch (serviceTypeUsed)
-                    {
-                        case Shipping.ServiceTypes.FedExAIR:
-                            response.ResponseMessage = ShipUsingFedExAIR(serviceID, package);
-                            response.ResponseStatus = true;
-                            return response;
-
-                        case Shipping.ServiceTypes.FedExGround:
-                            response.ResponseMessage = ShipUsingFedExGround(serviceID, package);
-                            response.ResponseStatus = true;
-                            return response;
-
-                        default:
-                            // Log bad response, that no such shipping service is defined in our API.
-                            // Return bad response, that no such shipping service is defined in our API.
-                            response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
-                            response.ResponseStatus = false;
-                            return response;
-                    }
-                }
-                else
-                {
-                    response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
-                    response.ResponseStatus = false;
-                    return response;
-                }
-            }
-            catch (Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return response;
-            }
-        }
-
-        private Response ShipUsingUPS(int serviceID = -1, Package package = null)
-        {
-            try
-            {
-                if (serviceID > 0)
-                {
-                    Shipping.ServiceTypes serviceTypeUsed = (Shipping.ServiceTypes)serviceID;
-
-                    switch (serviceTypeUsed)
-                    {
-                        case Shipping.ServiceTypes.UPSExpress:
-                            response.ResponseMessage = ShipUsingUPSExpress(serviceID, package);
-                            response.ResponseStatus = true;
-                            return response;
-
-                        case Shipping.ServiceTypes.UPS2DAY:
-                            response.ResponseMessage = ShipUsingUPS2DAY(serviceID, package);
-                            response.ResponseStatus = true;
-                            return response;
-
-                        default:
-                            // Log bad response, that no such shipping service is defined in our API.
-                            // Return bad response, that no such shipping service is defined in our API.
-                            response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
-                            response.ResponseStatus = false;
-                            return response;
-                    }
-                }
-                else
-                {
-                    response.ResponseMessage = String.Format("No such shipping service is defined in our API.");
-                    response.ResponseStatus = false;
-                    return response;
-                }
-            }
-            catch (Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return response;
-            }
-        }
-
-        private string ShipUsingFedExGround(int serviceID, Package package)
-        {
-            try
-            {
-                // Make API call to FedEx Ground API with arguments from input.
-                loggingService.LogSuccess(String.Format("Success [FedEx Ground], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
-                return String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length);
-            } catch(Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return new JavaScriptSerializer().Serialize(response);
-            }
-        }
-
-        private string ShipUsingFedExAIR(int serviceID, Package package)
-        {
-            try
-            {
-                // Make API call to FedEx AIR API with arguments from input.
-                loggingService.LogSuccess(String.Format("Success [FedEx AIR], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
-                return String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length);
-            }
-            catch (Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return new JavaScriptSerializer().Serialize(response);
-            }
-        }
-
-        private string ShipUsingUPSExpress(int serviceID, Package package)
-        {
-            try
-            {
-                // Make API call to UPS Express API with arguments from input.
-                loggingService.LogSuccess(String.Format("Success [UPS Express], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
-                return String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length);
-            }
-            catch (Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return new JavaScriptSerializer().Serialize(response);
-            }
-        }
-
-        private string ShipUsingUPS2DAY(int serviceID, Package package)
-        {
-            try
-            {
-                // Make API call to UPS2DAY API with arguments from input.
-                loggingService.LogSuccess(String.Format("Success [UPS 2DAY], package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length));
-                return String.Format("Success, package with dimensions Weight: {0} kg, Height: {1}, Width: {2}, Length: {3} costs $100.", package.Weight, package.Height, package.Width, package.Length);
-            }
-            catch (Exception error)
-            {
-                // Log error into a text file or db.
-                loggingService.LogFailure(String.Format("API failed to process your request. Error: {0}", error.Message));
-                response.ResponseMessage = String.Format("API failed to process your request. Error: {0}", error.Message);
-                response.ResponseStatus = false;
-                return new JavaScriptSerializer().Serialize(response);
             }
         }
     }

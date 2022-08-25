@@ -5,21 +5,21 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\CarrierAPIXML</_PublishTargetUrl>
-    <History>True|2022-08-24T22:21:03.9793201Z;True|2022-08-25T01:20:56.4458951+03:00;True|2022-08-25T01:18:09.9013554+03:00;True|2022-08-25T01:14:21.4896458+03:00;True|2022-08-25T01:11:29.5467750+03:00;True|2022-08-25T01:07:26.3658685+03:00;</History>
+    <History>True|2022-08-25T09:44:28.8563994Z;True|2022-08-25T01:21:03.9793201+03:00;True|2022-08-25T01:20:56.4458951+03:00;True|2022-08-25T01:18:09.9013554+03:00;True|2022-08-25T01:14:21.4896458+03:00;True|2022-08-25T01:11:29.5467750+03:00;True|2022-08-25T01:07:26.3658685+03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/CarrierAPIXML.dll">
-      <publishTime>08/25/2022 01:20:56</publishTime>
+      <publishTime>08/25/2022 12:44:28</publishTime>
     </File>
     <File Include="bin/CarrierAPIXML.pdb">
-      <publishTime>08/25/2022 01:20:56</publishTime>
+      <publishTime>08/25/2022 12:44:28</publishTime>
     </File>
     <File Include="bin/Dependencies.dll">
-      <publishTime>08/25/2022 01:20:55</publishTime>
+      <publishTime>08/25/2022 12:02:40</publishTime>
     </File>
     <File Include="bin/Dependencies.pdb">
-      <publishTime>08/25/2022 01:20:55</publishTime>
+      <publishTime>08/25/2022 12:02:40</publishTime>
     </File>
     <File Include="CarrierAPI.svc">
       <publishTime>08/25/2022 01:02:17</publishTime>
